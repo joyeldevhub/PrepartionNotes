@@ -1,0 +1,131 @@
+Database:
+=======
+A database is an organized collection of structured information, or data, 
+typically stored electronically in a computer system. A database is usually controlled by a 
+database management system (DBMS).
+
+
+
+SQL = Structured Query Language
+=========================
+* SQL (Structured Query Language) is a programming language used to 
+    store, manipulate, and retrieve data in databases.
+* It's a standard Language for relational database management systems(RDBMS)
+
+SQL Use: 
+=======
+* Communicate with a database.
+
+TYPES OF SQL:
+===========
+DDL  - Data Definition Language          --> Create, Alter, Drop, Truncate.
+DML - Data Manipulation Language   --> Insert, Update, Delete.
+DCL  - Data Control Language               --> Grant, Revoke.
+TCL  - Transaction Control Language --> Commit, Rollback, Save print.
+DQL - Data Query Language                   --> Select.
+
+SQL Can Do:
+=========
+- Execute queries against a database.
+- Retrieve data from a database.
+- Insert records in a database.
+- Create records in a database.
+- Delete records in a database.
+- Create new tables in a database.
+- Create stored procedures in a database.
+- Create new databases.
+
+Some of the most important SQL Commands:
+=================================
+> SELECT                         - extracts data from a database.
+> UPDATE                        - updates data in a database.
+> DELETE                        - deletes data from a database.
+> INSERT INTO              - inserts new data into a database.
+> CREATE DATABASE - creates a new database.
+> ALTER DATABASE    - modifies a database.
+> CREATE TABLE         - creates a new table.
+> ALTER TABLE            - modifies a table.
+> DROP TABLE              - deletes a table.
+> CREATE INDEX         - creates an index (search key).
+> DROP INDEX              - deletes an index.
+.---*--------------------------------------*------------------------------------*-------------------------------------*--------------------------------------*--------------------------------.
+
+Change CMD to MySQL Monitor
+=======================
+Mysql -u root -p
+Password: password
+
+Create Database:
+=============
+1) show databases;             - command will show a list of databases in MySQL.
+2) create database Joyel;  - command will create a database in name of Joyel.
+3) use Joyel;                          - command will use Joyel database to create tables to store data.
+4) drop Joyel;                       - command will delete or drop your Joyel database.
+
+Create Tables(the true heart of SQL)
+==========================
+* A database is just a bunch of tables.
+* Tables hold the data!
+
+Syntax:
+----------
+create table tablename(
+ column_name data_type,
+ column_name data_type
+);
+
+Create Table:
+=========
+create table morris(
+   name varchar(100),
+   age int
+);
+
+* If You want to see created table use the below commands:
+=> show tables;
+=> desc tablename; --> desc morris;
+
+* If You want to delete the table, use the below command:
+=> drop table tablename; --> drop table morris;
+
+
+Insert the Data into your table
+======================
+Syntax:
+---------
+Insert into table_name(column_names)
+values(data);
+
+Insert data:
+=========
+insert into morris(name, age)
+values("Joyel", 21),
+             ("Arun", 18);
+
+*If You want to see our data in a table, use this command:
+=> select * from table_name; --> select * from morris;
+     (The SELECT statement is used to select data from a database.)
+
+* If You want to see your data without duplicate values, use this Command:
+=> select distinct --> select distinct name from morris;
+       (The SELECT DISTINCT statement is used to return only distinct (different) values.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
