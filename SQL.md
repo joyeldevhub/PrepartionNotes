@@ -360,3 +360,156 @@ SELECT * FROM labour WHERE lastname IN ('Joyel', 'Trujillo');
 ```
 <br/><br/>
 
+### SQL Order By
+The ORDER BY keyword is used to sort the result-set in ascending or descending order.<br/>
+
+**Now, let's recreate the SQL queries for ordering records:
+**<br/>
+
+```sql
+-- **Ordering by "firstname" in ascending order**
+SELECT * FROM labour ORDER BY firstname;
+```
+
+**Result** (Ordered by "firstname" in ascending order):
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Alex      | Raj      | 25   | 56456856   |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Arun      | Britto   | 18   | 6383470154 |
+| Christina | Berglund | 20   | 1258       |
+| Maria     | Anders   | 27   | 147        |
+| Thomas    | Hardy    | 29   | 1047       |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Ordering by "age" in descending order**
+SELECT * FROM labour ORDER BY age DESC;
+```
+
+**Result** (Ordered by "age" in descending order):
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Thomas    | Hardy    | 29   | 1047       |
+| Antonio   | Moreno   | 28   | 369        |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Alex      | Raj      | 25   | 56456856   |
+| Alex      | Joyel    | 22   | 6383470145 |
+| Christina | Berglund | 20   | 1258       |
+| Arun      | Britto   | 18   | 6383470154 |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Ordering by "lastname" in ascending order**
+SELECT * FROM labour ORDER BY lastname ASC;
+```
+
+**Result** (Ordered by "lastname" in ascending order):
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Maria     | Anders   | 27   | 147        |
+| Christina | Berglund | 20   | 1258       |
+| Arun      | Britto   | 18   | 6383470154 |
+| Thomas    | Hardy    | 29   | 1047       |
+| Alex      | Joyel    | 22   | 6383470145 |
+| Antonio   | Moreno   | 28   | 369        |
+| Alex      | Raj      | 25   | 56456856   |
+| Ana       | Trujillo | 26   | 258        |
++-----------+----------+------+------------+
+```
+<br/><br/>
+
+### SQL AND Operator & OR Operator
+The WHERE clause can contain one or many AND operators. The AND operator is used to filter records based on more than one condition.<br/>
+
+```sql
+-- **Original Data in "labour" Table**
+SELECT * FROM labour;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
+| Arun      | Arun     | 18   | 3698521478 |
+| Karthi    | kaki     | 15   | 258963369  |
+| Margret   | Chau     | 22   | 564615352  |
++-----------+----------+------+------------+
+```
+<br/>
+
+**Now, let's recreate the SQL queries:**
+
+```sql
+-- **Selecting records where firstname starts with 'A' and age is 18**
+SELECT * FROM labour WHERE firstname LIKE 'A%' AND age = 18;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Arun      | Britto   | 18   | 6383470154 |
+| Arun      | Arun     | 18   | 3698521478 |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where firstname starts with 'A' and age is either 18 or 29**
+SELECT * FROM labour WHERE firstname LIKE 'A%' AND (age = 18 OR age = 29);
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Arun      | Britto   | 18   | 6383470154 |
+| Arun      | Arun     | 18   | 3698521478 |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where firstname starts with 'A' and age is either 18 or less than 29**
+SELECT * FROM labour WHERE firstname LIKE 'A%' AND (age = 18 OR age < 29);
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Arun      | Arun     | 18   | 3698521478 |
++-----------+----------+------+------------+
+```
+<br/><br/>
