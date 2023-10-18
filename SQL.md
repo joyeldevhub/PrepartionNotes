@@ -555,3 +555,49 @@ SELECT * FROM labour WHERE firstname = 'Alex' OR lastname = 'Arun' OR age = 18;
 +-----------+----------+------+------------+
 ```
 <br/><br/>
+
+### SQL NOT Operator
+The NOT operator is used in combination with other operators to give the opposite result, also called the negative result.<br/>
+Certainly, I've recreated the SQL queries you provided along with the corresponding results based on the "labour" table data:
+
+```sql
+-- Selecting records where the age is not 18
+SELECT * FROM labour WHERE NOT age = 18;
+```
+
+Result:
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
+| Karthi    | kaki     | 15   | 258963369  |
+| Margret   | Chau     | 22   | 564615352  |
++-----------+----------+------+------------+
+```
+
+```sql
+-- Selecting records where the firstname does not start with 'A'
+SELECT * FROM labour WHERE NOT firstname LIKE 'A%';
+```
+
+Result:
+```
++-----------+----------+------+-----------+
+| firstname | lastname | age  | phone     |
++-----------+----------+------+-----------+
+| Maria     | Anders   | 27   | 147       |
+| Thomas    | Hardy    | 29   | 1047      |
+| Christina | Berglund | 20   | 1258      |
+| Karthi    | kaki     | 15   | 258963369 |
+| Margret   | Chau     | 22   | 564615352 |
++-----------+----------+------+-----------+
+```
+
+These queries use the `NOT` operator to negate conditions, allowing you to retrieve records that do not match the specified criteria. If you have any more questions or need further assistance, please feel free to ask.
