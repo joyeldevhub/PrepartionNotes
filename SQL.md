@@ -1,46 +1,37 @@
 # Database:
-=======
-A database is an organized collection of structured information, or data, 
-typically stored electronically in a computer system. A database is usually controlled by a 
-database management system (DBMS).
+A database is an organized collection of structured information, or data, typically stored electronically in a computer system. A database is usually controlled by a database management system (DBMS).<br/>
 
 <br/><br/>
 
 ### SQL = Structured Query Language
-=========================
-* SQL (Structured Query Language) is a programming language used to 
-    store, manipulate, and retrieve data in databases.<br/>
+* SQL (Structured Query Language) is a programming language used to store, manipulate, and retrieve data in databases.<br/>
 * It's a standard Language for relational database management systems(RDBMS).<br/>
 <br/>
 
 ### SQL Use: 
-=======
 * Communicate with a database.<br/>
 <br/>
 
 ### TYPES OF SQL:
-===========
-DDL  - Data Definition Language     --> Create, Alter, Drop, Truncate.<br/>
-DML - Data Manipulation Language    --> Insert, Update, Delete.<br/>
-DCL  - Data Control Language        --> Grant, Revoke.<br/>
-TCL  - Transaction Control Language --> Commit, Rollback, Save print.<br/>
-DQL - Data Query Language           --> Select.<br/>
+**DDL **  - Data Definition Language      --> Create, Alter, Drop, Truncate.<br/>
+**DML**   - Data Manipulation Language    --> Insert, Update, Delete.<br/>
+**DCL**   - Data Control Language         --> Grant, Revoke.<br/>
+**TCL**   - Transaction Control Language  --> Commit, Rollback, Save print.<br/>
+**DQL**   - Data Query Language           --> Select.<br/>
 <br/>
 
 ### SQL Can Do:
-=========
-- Execute queries against a database.
-- Retrieve data from a database.
-- Insert records in a database.
-- Create records in a database.
-- Delete records in a database.
-- Create new tables in a database.
-- Create stored procedures in a database.
-- Create new databases.
+- Execute queries against a database.<br/>
+- Retrieve data from a database.<br/>
+- Insert records in a database.<br/>
+- Create records in a database.<br/>
+- Delete records in a database.<br/>
+- Create new tables in a database.<br/>
+- Create stored procedures in a database.<br/>
+- Create new databases.<br/>
 <br/>
 
 ### Some of the most important SQL Commands:
-=================================
 > SELECT            - extracts data from a database.<br/>
 > UPDATE            - updates data in a database.<br/>
 > DELETE            - deletes data from a database.<br/>
@@ -55,32 +46,27 @@ DQL - Data Query Language           --> Select.<br/>
 <br/><br/>
 
 ## Change CMD to MySQL Monitor
-=======================
 Mysql -u root -p
 Password: password
 
 # Create Database:
-=============
-1) show databases;         - command will show a list of databases in MySQL.
-2) create database Joyel;  - command will create a database in the name of Joyel.
-3) use Joyel;              - command will use Joyel database to create tables to store data.
-4) drop Joyel;             - command will delete or drop your Joyel database.
+1) show databases;         - command will show a list of databases in MySQL.<br/>
+2) create database Joyel;  - command will create a database in the name of Joyel.<br/>
+3) use Joyel;              - command will use Joyel database to create tables to store data.<br/>
+4) drop Joyel;             - command will delete or drop your Joyel database.<br/>
 <br/>
 
 ### Create Tables(the true heart of SQL)
-==========================
 * A database is just a bunch of tables.<br/>
 * Tables hold the data!<br/>
 
 #### Syntax:
-----------
 create table tablename(
  column_name data_type,
  column_name data_type
 );
 
-Create Table:
-=========
+#### Create Table:
 create table morris(
    name varchar(100),
    age int
@@ -95,14 +81,12 @@ create table morris(
 
 
 ### Insert the Data into your table
-======================
 Syntax:
 ---------
 Insert into table_name(column_names)
 values(data);
 
-Insert data:
-=========
+####Insert data:
 insert into morris(name, age)
 values("Joyel", 21),
              ("Arun", 18);
