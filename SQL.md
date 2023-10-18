@@ -432,7 +432,7 @@ SELECT * FROM labour ORDER BY lastname ASC;
 ```
 <br/><br/>
 
-### SQL AND Operator & OR Operator
+### SQL AND Operator
 The WHERE clause can contain one or many AND operators. The AND operator is used to filter records based on more than one condition.<br/>
 
 ```sql
@@ -509,6 +509,48 @@ SELECT * FROM labour WHERE firstname LIKE 'A%' AND (age = 18 OR age < 29);
 | Alex      | Raj      | 25   | 56456856   |
 | Ana       | Trujillo | 26   | 258        |
 | Antonio   | Moreno   | 28   | 369        |
+| Arun      | Arun     | 18   | 3698521478 |
++-----------+----------+------+------------+
+```
+<br/><br/>
+
+### OR Operator
+The WHERE clause can contain one or more OR operators. The OR operator is used to filter records based on more than one condition.<br/>
+
+```sql
+-- **Selecting records where firstname starts with 'A', lastname ends with 'o', or age is less than 18**
+SELECT * FROM labour WHERE firstname LIKE 'A%' OR lastname LIKE '%o' OR age < 18;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Arun      | Arun     | 18   | 3698521478 |
+| Karthi    | kaki     | 15   | 258963369  |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where firstname is 'Alex', lastname is 'Arun', or age is 18**
+SELECT * FROM labour WHERE firstname = 'Alex' OR lastname = 'Arun' OR age = 18;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
 | Arun      | Arun     | 18   | 3698521478 |
 +-----------+----------+------+------------+
 ```
