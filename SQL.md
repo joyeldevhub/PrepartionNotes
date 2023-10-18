@@ -180,4 +180,183 @@ SELECT * FROM table_name; -- For example, SELECT * FROM Morris;
 ```sql
 SELECT DISTINCT column_name FROM table_name; -- For example, SELECT DISTINCT name FROM Morris;
 ```
+<br/><br/>
+
+### Where clause:
+WHERE clause specifies criteria that field values must meet for the records that contain the values to be included in the query results.
+
+**I'll recreate the SQL queries you provided along with the corresponding results:**
+
+```sql
+-- **Original Data in "labour" Table**
+SELECT * FROM labour;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
++-----------+----------+------+------------+
+```
+<br/>
+
+**Now, let's recreate the queries:**
+
+```sql
+-- **Selecting records where age is 25**
+SELECT * FROM labour WHERE age = 25;
+```
+
+**Result:**
+```
++-----------+----------+------+----------+
+| firstname | lastname | age  | phone    |
++-----------+----------+------+----------+
+| Alex      | Raj      | 25   | 56456856 |
++-----------+----------+------+----------+
+```
+<br/>
+
+```sql
+-- **Selecting records where age is greater than 18**
+SELECT * FROM labour WHERE age > 18;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where age is less than 25**
+SELECT * FROM labour WHERE age < 25;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Christina | Berglund | 20   | 1258       |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where age is greater than or equal to 18**
+SELECT * FROM labour WHERE age >= 18;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where age is not equal to 26**
+SELECT * FROM labour WHERE age <> 26;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where age is between 18 and 25**
+SELECT * FROM labour WHERE age BETWEEN 18 AND 25;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Christina | Berglund | 20   | 1258       |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where firstname starts with 'A'**
+SELECT * FROM labour WHERE firstname LIKE 'A%';
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
++-----------+----------+------+------------+
+```
+<br/>
+
+```sql
+-- **Selecting records where lastname is 'Joyel' or 'Trujillo'**
+SELECT * FROM labour WHERE lastname IN ('Joyel', 'Trujillo');
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Ana       | Trujillo | 26   | 258        |
++-----------+----------+------+------------+
+```
+<br/><br/>
 
