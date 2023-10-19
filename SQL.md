@@ -66,7 +66,7 @@ A **database** is an organized collection of structured information, or data, ty
 - DROP TABLE: Deletes a table.<br/>
 - CREATE INDEX: Creates an index for efficient data retrieval.<br/>
 - DROP INDEX: Deletes an index.<br/>
-<br/>
+<br/><hr/>
 
 ## MySQL Commands
 
@@ -111,7 +111,7 @@ USE Joyel;
 ```sql
 DROP DATABASE Joyel;
 ```
-<br/>
+<br/><br/><hr/>
 
 ### Table Creation
 
