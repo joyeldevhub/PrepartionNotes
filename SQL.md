@@ -833,7 +833,10 @@ SELECT * FROM labour;
 The record with "lastname" as 'kirk' has been successfully deleted from the table.<be/>
 
 2. Delete All records in a table.<br/>
-
-```sql
 -- **Delete all records from the "labour" table**
-DELETE FROM labour;
+   DELETE FROM labour;
+
+The "labour" table has been deleted.
+<br/><hr/><br/>
+
+### SQL MIN() and MAX() Functions
