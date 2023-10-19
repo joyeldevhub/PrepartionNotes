@@ -1370,56 +1370,66 @@ VALUES
 
 SELECT * FROM Employee;
 ```
+<br/>
+
+```sql
 +------+-----------+----------+-------------+--------+--------------+
 | ID   | Firstname | Lastname | DateOfBirth | Gender | DepartmentID |
 +------+-----------+----------+-------------+--------+--------------+
-| 1001 | Aishwarya | Jayaram  | 2005-04-24  | F      |           11 |
-| 1002 | Anand     | Venkat   | 2005-05-22  | M      |           12 |
-| 1003 | Bala      | Sundaram | 2004-11-02  | M      |           13 |
-| 1004 | Deepa     | Mani     | 2004-12-09  | F      |           11 |
-| 1005 | Deepa     | Mahesh   | 2005-05-29  | F      |           14 |
-| 1006 | Gokul     | Ram      | 2004-11-27  | M      |           13 |
-| 1007 | Shreya    | Gopi     | 2005-06-20  | F      |           17 |
-| 1008 | Abdul     | Rahman   | 2005-07-30  | M      |           18 |
+| 1001 | Aishwarya | Jayaram  | 2005-04-24  | F      | 11           |
+| 1002 | Anand     | Venkat   | 2005-05-22  | M      | 12           |
+| 1003 | Bala      | Sundaram | 2004-11-02  | M      | 13           |
+| 1004 | Deepa     | Mani     | 2004-12-09  | F      | 11           |
+| 1005 | Deepa     | Mahesh   | 2005-05-29  | F      | 14           |
+| 1006 | Gokul     | Ram      | 2004-11-27  | M      | 13           |
+| 1007 | Shreya    | Gopi     | 2005-06-20  | F      | 17           |
+| 1008 | Abdul     | Rahman   | 2005-07-30  | M      | 18           |
 +------+-----------+----------+-------------+--------+--------------+
+```
 This code creates the "Employee" table, inserts data into it, and then retrieves all records from the table.
-
 <br/><hr/><br/>
 
+### MySQL FOREIGN KEY
+The FOREIGN KEY constraint is used to prevent actions that would destroy links between tables. A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table. The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.<br/>
 
+```sql
+CREATE TABLE Department (
+    DepartmentID INT NOT NULL,
+    DepartmentName VARCHAR(100) NOT NULL,
+    ID INT,
+    PRIMARY KEY (DepartmentID),
+    FOREIGN KEY (ID) REFERENCES Employee (ID)
+);
+```
+<br/>
 
+**Now, you can insert department information:**
 
+```sql
+INSERT INTO Department (DepartmentID, DepartmentName)
+VALUES
+    (11, 'Engineering'),
+    (12, 'Finance'),
+    (13, 'Sales'),
+    (14, 'Marketing'),
+    (15, 'Human Resources'),
+    (16, 'IT');
+```
+**Here are the records in the "Department" table:**
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
++--------------+-----------------+------+
+| DepartmentID | DepartmentName  | ID   |
++--------------+-----------------+------+
+|           11 | Engineering     | NULL |
+|           12 | Finance         | NULL |
+|           13 | Sales           | NULL |
+|           14 | Marketing       | NULL |
+|           15 | Human Resources | NULL |
+|           16 | IT              | NULL |
++--------------+-----------------+------+
+```
+<br/><hr/><br/>
 
 ### MySQL Joins
 A JOIN clause is used to combine rows from two or more tables, based on a related column between them.<br/>
