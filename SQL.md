@@ -1091,12 +1091,352 @@ SELECT * FROM labour WHERE lastname LIKE 'Bri__o';
 ### SQL Wildcards
 A wildcard character is used to substitute one or more characters in a string. Wildcard characters are used with the LIKE operator. The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.< br/>
 
-**%**	- Represents zero or more characters.<br/>
-**_**	- Represents a single character.<br/>
+**%** 	- Represents zero or more characters.<br/>
+**_**	   - Represents a single character.<br/>
 **[]**	- Represents any single character within the brackets.<br/>
-**^**	- Represents any character not in the brackets.<br/>
-**-**	- Represents any single character within the specified range.<br/>
+**^** 	- Represents any character not in the brackets.<br/>
+**-** 	- Represents any single character within the specified range.<br/>
 **{}**	- Represents any escaped character.<br/>
+<br/>
+
+1. Using the % Wildcard:<br/>
+**Records where "firstname" starts with 'M':**
+```sql
+SELECT * FROM labour WHERE firstname LIKE 'M%';
+```
+
+**Result:**
+```
++-----------+----------+------+-----------+
+| firstname | lastname | age  | phone     |
++-----------+----------+------+-----------+
+| Maria     | Anders   |   27 | 147       |
+| Margret   | Chau     |   22 | 564615352 |
++-----------+----------+------+-----------+
+```
+<br/>
+
+**Records where "lastname" contains 'ruj':**
+```sql
+SELECT * FROM labour WHERE lastname LIKE '%ruj%';
+```
+
+**Result:**
+```
++-----------+----------+------+-------+
+| firstname | lastname | age  | phone |
++-----------+----------+------+-------+
+| Ana       | Trujillo |   26 | 258   |
++-----------+----------+------+-------+
+```
+<br/><br/>
+
+2. Using the _ Wildcard:<br/>
+**Records where "firstname" matches the pattern 'Ar_n' (where '_' represents any single character):**
+```sql
+SELECT * FROM labour WHERE firstname LIKE 'Ar_n';
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Arun      | Britto   |   18 | 6383470154 |
+| Arun      | Arun     |   18 | 3698521478 |
++-----------+----------+------+------------+
+```
+<br/>
+
+**Records where "lastname" matches the pattern 'ch__' (where '_' represents any single character):**
+```sql
+SELECT * FROM labour WHERE lastname LIKE 'ch__';
+```
+
+**Result:**
+```
++-----------+----------+------+-----------+
+| firstname | lastname | age  | phone     |
++-----------+----------+------+-----------+
+| Margret   | Chau     |   22 | 564615352 |
++-----------+----------+------+-----------+
+```
+<br/><hr/><br/>
+
+### MySQL IN Operator
+The IN operator allows you to specify multiple values in a WHERE clause. The IN operator is a shorthand for multiple OR conditions.<br/>
+1. Records where "firstname" is 'Alex', 'Arun', or 'Joyel':
+```sql
+SELECT * FROM labour WHERE firstname IN ('Alex', 'Arun', 'Joyel');
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    |   22 | 6383470145 |
+| Arun      | Britto   |   18 | 6383470154 |
+| Alex      | Raj      |   25 | 56456856   |
+| Joyel     | Raj      |   20 | 1258       |
+| Arun      | Arun     |   18 | 3698521478 |
++-----------+----------+------+------------+
+```
+<br/>
+
+2. Records where "firstname" is not 'Alex', 'Arun', or 'Joyel':
+```sql
+SELECT * FROM labour WHERE firstname NOT IN ('Alex', 'Arun', 'Joyel');
+```
+
+**Result:**
+```
++-----------+----------+------+-----------+
+| firstname | lastname | age  | phone     |
++-----------+----------+------+-----------+
+| Maria     | Anders   |   27 | 147       |
+| Ana       | Trujillo |   26 | 258       |
+| Antonio   | Moreno   |   28 | 369       |
+| Thomas    | Hardy    |   29 | 1047      |
+| Karthi    | kaki     |   15 | 258963369 |
+| Margret   | Chau     |   22 | 564615352 |
+| Dell      | Company  |   65 | 563256    |
+| Sony      | Company  |   75 | 7854785   |
++-----------+----------+------+-----------+
+```
+The queries successfully filtered records based on the "firstname" column using the `IN` and `NOT IN` operators.
+<br/><hr/><br/>
+
+### MySQL BETWEEN Operator
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. The BETWEEN operator is inclusive: begin and end values are included.<br/>
+
+1. Records where "firstname" is between 'Ana' and 'Margret':
+```sql
+SELECT * FROM labour WHERE firstname BETWEEN 'Ana' AND 'Margret';
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Arun      | Britto   |   18 | 6383470154 |
+| Ana       | Trujillo |   26 | 258        |
+| Antonio   | Moreno   |   28 | 369        |
+| Joyel     | Raj      |   20 | 1258       |
+| Arun      | Arun     |   18 | 3698521478 |
+| Karthi    | kaki     |   15 | 258963369  |
+| Margret   | Chau     |   22 | 564615352  |
+| Dell      | Company  |   65 | 563256     |
++-----------+----------+------+------------+
+```
+<br/>
+
+2. The same records sorted by "firstname":
+```sql
+SELECT * FROM labour WHERE firstname BETWEEN 'Ana' AND 'Margret' ORDER BY firstname;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Ana       | Trujillo |   26 | 258        |
+| Antonio   | Moreno   |   28 | 369        |
+| Arun      | Britto   |   18 | 6383470154 |
+| Arun      | Arun     |   18 | 3698521478 |
+| Dell      | Company  |   65 | 563256     |
+| Joyel     | Raj      |   20 | 1258       |
+| Karthi    | kaki     |   15 | 258963369  |
+| Margret   | Chau     |   22 | 564615352  |
++-----------+----------+------+------------+
+```
+<br/>
+
+3. Records where "age" is not between 29 and 75, sorted by "age":
+```sql
+SELECT * FROM labour WHERE age NOT BETWEEN 29 AND 75 ORDER BY age;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Karthi    | kaki     |   15 | 258963369  |
+| Arun      | Britto   |   18 | 6383470154 |
+| Arun      | Arun     |   18 | 3698521478 |
+| Joyel     | Raj      |   20 | 1258       |
+| Alex      | Joyel    |   22 | 6383470145 |
+| Margret   | Chau     |   22 | 564615352  |
+| NULL      | Doni     |   22 | NULL       |
+| Alex      | Raj      |   25 | 56456856   |
+| Ana       | Trujillo |   26 | 258        |
+| Maria     | Anders   |   27 | 147        |
+| Antonio   | Moreno   |   28 | 369        |
++-----------+----------+------+------------+
+```
+<br/><hr/><br/>
+
+### MySQL Aliases
+* Aliases are used to give a table, or a column in a table, a temporary name.<br/>
+* Aliases are often used to make column names more readable.<br/>
+* An alias only exists for the duration of that query.<br/>
+* An alias is created with the AS keyword.<br/>
+<br/>
+1. A query that selects "firstname" with an alias "Names":
+```sql
+SELECT firstname AS Names FROM labour;
+```
+
+**Result:**
+```
++---------+
+| Names   |
++---------+
+| Alex    |
+| Arun    |
+| Alex    |
+| Maria   |
+| Ana     |
+| Antonio |
+| Thomas  |
+| Joyel   |
+| Arun    |
+| Karthi  |
+| Margret |
+| NULL    |
+| Dell    |
+| Sony    |
++---------+
+```
+<br/>
+
+2. A query that concatenates "firstname" and "lastname" with an alias "Names":
+```sql
+SELECT CONCAT(firstname, ' ', lastname) AS Names FROM labour;
+```
+
+**Result:**
+```
++----------------+
+| Names          |
++----------------+
+| Alex Joyel     |
+| Arun Britto    |
+| Alex Raj       |
+| Maria Anders   |
+| Ana Trujillo   |
+| Antonio Moreno |
+| Thomas Hardy   |
+| Joyel Raj      |
+| Arun Arun      |
+| Karthi kaki    |
+| Margret Chau   |
+| NULL           |
+| Dell Company   |
+| Sony Company   |
++----------------+
+```
+<br/><hr/><br/>
+
+### MySQL PRIMARY KEY
+The PRIMARY KEY constraint uniquely identifies each record in a table. Primary keys must contain UNIQUE values, and **cannot contain NULL values**. A table can have only ONE primary key; and in the table, this primary key can consist of single or multiple columns (fields).<br/>
+
+**Create Primary Key Table:**
+
+```sql
+CREATE TABLE Employee (
+    ID INT NOT NULL,
+    Firstname VARCHAR(100),
+    Lastname VARCHAR(100) NOT NULL,
+    DateOfBirth VARCHAR(100),
+    Gender VARCHAR(5),
+    DepartmentID INT,
+    PRIMARY KEY (ID)
+);
+
+INSERT INTO Employee (ID, Firstname, Lastname, DateOfBirth, Gender, DepartmentID)
+VALUES
+    (1001, 'Aishwarya', 'Jayaram', '2005-04-24', 'F', 11),
+    (1002, 'Anand', 'Venkat', '2005-05-22', 'M', 12),
+    (1003, 'Bala', 'Sundaram', '2004-11-02', 'M', 13),
+    (1004, 'Deepa', 'Mani', '2004-12-09', 'F', 11),
+    (1005, 'Deepa', 'Mahesh', '2005-05-29', 'F', 14),
+    (1006, 'Gokul', 'Ram', '2004-11-27', 'M', 13),
+    (1007, 'Shreya', 'Gopi', '2005-06-20', 'F', 17),
+    (1008, 'Abdul', 'Rahman', '2005-07-30', 'M', 18);
+
+SELECT * FROM Employee;
+```
++------+-----------+----------+-------------+--------+--------------+
+| ID   | Firstname | Lastname | DateOfBirth | Gender | DepartmentID |
++------+-----------+----------+-------------+--------+--------------+
+| 1001 | Aishwarya | Jayaram  | 2005-04-24  | F      |           11 |
+| 1002 | Anand     | Venkat   | 2005-05-22  | M      |           12 |
+| 1003 | Bala      | Sundaram | 2004-11-02  | M      |           13 |
+| 1004 | Deepa     | Mani     | 2004-12-09  | F      |           11 |
+| 1005 | Deepa     | Mahesh   | 2005-05-29  | F      |           14 |
+| 1006 | Gokul     | Ram      | 2004-11-27  | M      |           13 |
+| 1007 | Shreya    | Gopi     | 2005-06-20  | F      |           17 |
+| 1008 | Abdul     | Rahman   | 2005-07-30  | M      |           18 |
++------+-----------+----------+-------------+--------+--------------+
+This code creates the "Employee" table, inserts data into it, and then retrieves all records from the table.
+
+<br/><hr/><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### MySQL Joins
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.<br/>
+
+* INNER JOIN: Returns records that have matching values in both tables.<br/>
+* LEFT JOIN: Returns all records from the left table, and the matched records from the right table.<br/>
+* RIGHT JOIN: Returns all records from the right table, and the matched records from the left table.<br/>
+* CROSS JOIN: Returns all records from both tables.<br/>
+<br/>
+
+1. MySQL INNER JOIN Keyword:<br/>
+
+
+
+
+
+
 
 
 
