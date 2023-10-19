@@ -1357,6 +1357,7 @@ CREATE TABLE Employee (
     PRIMARY KEY (ID)
 );
 
+**Now, you can insert Employee information:**
 INSERT INTO Employee (ID, Firstname, Lastname, DateOfBirth, Gender, DepartmentID)
 VALUES
     (1001, 'Aishwarya', 'Jayaram', '2005-04-24', 'F', 11),
@@ -1372,6 +1373,7 @@ SELECT * FROM Employee;
 ```
 <br/>
 
+**Here are the records in the "Employee" table:**
 ```sql
 +------+-----------+----------+-------------+--------+--------------+
 | ID   | Firstname | Lastname | DateOfBirth | Gender | DepartmentID |
@@ -1391,6 +1393,8 @@ This code creates the "Employee" table, inserts data into it, and then retrieves
 
 ### MySQL FOREIGN KEY
 The FOREIGN KEY constraint is used to prevent actions that would destroy links between tables. A FOREIGN KEY is a field (or collection of fields) in one table, that refers to the PRIMARY KEY in another table. The table with the foreign key is called the child table, and the table with the primary key is called the referenced or parent table.<br/>
+
+**Create Foreign Key**
 
 ```sql
 CREATE TABLE Department (
@@ -1440,7 +1444,30 @@ A JOIN clause is used to combine rows from two or more tables, based on a relate
 * CROSS JOIN: Returns all records from both tables.<br/>
 <br/>
 
-1. MySQL INNER JOIN Keyword:<br/>
+**1. MySQL INNER JOIN Keyword:**<br/>
+To recreate the `employee` and `department` tables and perform the `INNER JOIN`, follow these steps:
+
+```sql
+SELECT * FROM Employee
+INNER JOIN Department ON Employee.DepartmentID = Department.DepartmentID;
+```
+This will provide you with the joined result between the two tables.
+<br/>
+
+Certainly, here's the recreated query with the `INNER JOIN` between the "Employee" and "Department" tables:
+
+```sql
+SELECT employee.firstname, employee.lastname, department.departmentid
+FROM employee
+INNER JOIN department ON employee.departmentid = department.departmentid;
+```
+This query selects the first name and last name of employees along with their corresponding department IDs from the "Employee" and "Department" tables.
+<br/><br/>
+
+2. MySQL OUTER JOIN Keyword:**
+* Right outer join
+* Left outer join
+* full outer join
 
 
 
