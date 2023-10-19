@@ -837,6 +837,3 @@ The record with "lastname" as 'kirk' has been successfully deleted from the tabl
 ```sql
 -- **Delete all records from the "labour" table**
 DELETE FROM labour;
-
-The "labour" table has been deleted.<br/>
-<hr/><br/> 
