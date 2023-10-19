@@ -558,14 +558,13 @@ SELECT * FROM labour WHERE firstname = 'Alex' OR lastname = 'Arun' OR age = 18;
 
 ### SQL NOT Operator
 The NOT operator is used in combination with other operators to give the opposite result, also called the negative result.<br/>
-Certainly, I've recreated the SQL queries you provided along with the corresponding results based on the "labour" table data:
 
 ```sql
--- Selecting records where the age is not 18
+-- **Selecting records where the age is not 18**
 SELECT * FROM labour WHERE NOT age = 18;
 ```
 
-Result:
+**Result:**
 ```
 +-----------+----------+------+------------+
 | firstname | lastname | age  | phone      |
@@ -581,13 +580,14 @@ Result:
 | Margret   | Chau     | 22   | 564615352  |
 +-----------+----------+------+------------+
 ```
+<br/>
 
 ```sql
--- Selecting records where the firstname does not start with 'A'
+-- **Selecting records where the firstname does not start with 'A'**
 SELECT * FROM labour WHERE NOT firstname LIKE 'A%';
 ```
 
-Result:
+**Result:**
 ```
 +-----------+----------+------+-----------+
 | firstname | lastname | age  | phone     |
@@ -599,5 +599,209 @@ Result:
 | Margret   | Chau     | 22   | 564615352 |
 +-----------+----------+------+-----------+
 ```
+<br/><br/>
 
-These queries use the `NOT` operator to negate conditions, allowing you to retrieve records that do not match the specified criteria. If you have any more questions or need further assistance, please feel free to ask.
+### SQL Insert Statement
+The INSERT INTO statement is used to insert new records in a table.<br/>
+1. Specify both the column names and the values to be inserted:<br/>
+   
+```sql
+-- **Inserting new records into the "labour" table**
+INSERT INTO labour (lastname, age)
+VALUES ('kirk', 30),
+       ('Doni', 22);
+
+-- **Viewing the updated "labour" table**
+SELECT * FROM labour;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
+| Arun      | Arun     | 18   | 3698521478 |
+| Karthi    | kaki     | 15   | 258963369  |
+| Margret   | Chau     | 22   | 564615352  |
+| NULL      | kirk     | 30   | NULL       |
+| NULL      | Doni     | 22   | NULL       |
++-----------+----------+------+------------+
+```
+<br/>
+
+2. If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table.<br/>
+
+```sql
+-- **Inserting new records into the "labour" table**
+INSERT INTO labour (firstname, lastname, age, phone)
+VALUES ('Dell', 'Company', 65, 563256),
+       ('HP', 'Company', 75, 7854785);
+
+-- **Viewing the updated "labour" table**
+SELECT * FROM labour;
+```
+
+**Result:**
+```
++-----------+----------+------+----------+
+| firstname | lastname | age  | phone    |
++-----------+----------+------+----------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
+| Arun      | Arun     | 18   | 3698521478 |
+| Karthi    | kaki     | 15   | 258963369  |
+| Margret   | Chau     | 22   | 564615352  |
+| NULL      | kirk     | 30   | NULL       |
+| NULL      | Doni     | 22   | NULL       |
+| Dell      | Company  | 65   | 563256    |
+| HP        | Company  | 75   | 7854785   |
++-----------+----------+------+----------+
+```
+<br/><br/>
+
+### SQL Null Values
+A field with a NULL value is a field with no value. If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field.<br/>
+
+1. The IS NULL operator is used to test for empty values (NULL values).<br/>
+
+```sql
+-- **Selecting records where firstname is NULL**
+SELECT * FROM labour WHERE firstname IS NULL;
+```
+
+**Result:**
+```
++-----------+----------+------+-------+
+| firstname | lastname | age  | phone |
++-----------+----------+------+-------+
+| NULL      | kirk     | 30   | NULL  |
+| NULL      | Doni     | 22   | NULL  |
++-----------+----------+------+-------+
+```
+<br/>
+
+2. The IS NOT NULL operator is used to test for non-empty values (NOT NULL values).<br/>
+
+```sql
+-- **Selecting records where firstname is not NULL**
+SELECT * FROM labour WHERE firstname IS NOT NULL;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Christina | Berglund | 20   | 1258       |
+| Arun      | Arun     | 18   | 3698521478 |
+| Karthi    | kaki     | 15   | 258963369  |
+| Margret   | Chau     | 22   | 564615352  |
+| Dell      | Company  | 65   | 563256     |
+| HP        | Company  | 75   | 7854785    |
++-----------+----------+------+------------+
+```
+<br/><br/>
+
+
+### SQL Update Statement
+The UPDATE statement is used to modify the existing records in a table.<br/>
+
+```sql
+-- **Updating records in the "labour" table where age is 20**
+UPDATE labour
+SET firstname = 'Joyel', lastname = 'Raj'
+WHERE age = 20;
+
+-- **Viewing the updated "labour" table**
+SELECT * FROM labour;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Joyel     | Raj      | 20   | 1258       |  <-- Updated record
+| Arun      | Arun     | 18   | 3698521478 |
+| Karthi    | kaki     | 15   | 258963369  |
+| Margret   | Chau     | 22   | 564615352  |
+| NULL      | kirk     | 30   | NULL       |
+| NULL      | Doni     | 22   | NULL       |
+| Dell      | Company  | 65   | 563256     |
+| HP        | Company  | 75   | 7854785    |
++-----------+----------+------+------------+
+```
+The records where the age was 20 have been successfully updated with the first name "Joyel" and last name "Raj."<br/>
+
+```sql
+-- **Updating the "firstname" from 'HP' to 'Sony' in the "labour" table**
+UPDATE labour
+SET firstname = 'Sony'
+WHERE firstname = 'HP';
+
+-- **Viewing the updated "labour" table**
+SELECT * FROM labour;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Joyel     | Raj      | 20   | 1258       |
+| Arun      | Arun     | 18   | 3698521478 |
+| Karthi    | kaki     | 15   | 258963369  |
+| Margret   | Chau     | 22   | 564615352  |
+| NULL      | kirk     | 30   | NULL       |
+| NULL      | Doni     | 22   | NULL       |
+| Dell      | Company  | 65   | 563256     |
+| Sony      | Company  | 75   | 7854785    |  <-- Updated record
++-----------+----------+------+------------+
+```
+The record with "firstname" as 'HP' has been successfully updated to 'Sony.'
+<br/><br/>
+
+### SQL Delete Statement
+
+
+
+
+
+
+
+   
