@@ -66,7 +66,7 @@ A **database** is an organized collection of structured information, or data, ty
 - DROP TABLE: Deletes a table.<br/>
 - CREATE INDEX: Creates an index for efficient data retrieval.<br/>
 - DROP INDEX: Deletes an index.<br/>
-<br/><hr/>
+<br/><hr/><br/>
 
 ## MySQL Commands
 
@@ -111,7 +111,7 @@ USE Joyel;
 ```sql
 DROP DATABASE Joyel;
 ```
-<br/><br/><hr/>
+<br/><hr/><br/>
 
 ### Table Creation
 
@@ -151,9 +151,9 @@ DESC tablename; -- For example, DESC Morris;
 ```sql
 DROP TABLE tablename; -- For example, DROP TABLE Morris;
 ```
-<br/><br/>
+<br/><hr/><br/>
 
-### Data Insertion
+### SQL Data Insertion
 
 **To insert data into a table, you can use the following syntax:**
 
@@ -180,9 +180,9 @@ SELECT * FROM table_name; -- For example, SELECT * FROM Morris;
 ```sql
 SELECT DISTINCT column_name FROM table_name; -- For example, SELECT DISTINCT name FROM Morris;
 ```
-<br/><br/>
+<br/><hr/><br/>
 
-### Where clause:
+### SQL Where clause:
 WHERE clause specifies criteria that field values must meet for the records that contain the values to be included in the query results.
 
 **I'll recreate the SQL queries you provided along with the corresponding results:**
@@ -358,7 +358,7 @@ SELECT * FROM labour WHERE lastname IN ('Joyel', 'Trujillo');
 | Ana       | Trujillo | 26   | 258        |
 +-----------+----------+------+------------+
 ```
-<br/><br/>
+<br/><hr/><br/>
 
 ### SQL Order By
 The ORDER BY keyword is used to sort the result-set in ascending or descending order.<br/>
@@ -430,7 +430,7 @@ SELECT * FROM labour ORDER BY lastname ASC;
 | Ana       | Trujillo | 26   | 258        |
 +-----------+----------+------+------------+
 ```
-<br/><br/>
+<br/><hr/><br/>
 
 ### SQL AND Operator
 The WHERE clause can contain one or many AND operators. The AND operator is used to filter records based on more than one condition.<br/>
@@ -512,9 +512,9 @@ SELECT * FROM labour WHERE firstname LIKE 'A%' AND (age = 18 OR age < 29);
 | Arun      | Arun     | 18   | 3698521478 |
 +-----------+----------+------+------------+
 ```
-<br/><br/>
+<br/><hr/><br/>
 
-### OR Operator
+### SQL OR Operator
 The WHERE clause can contain one or more OR operators. The OR operator is used to filter records based on more than one condition.<br/>
 
 ```sql
@@ -554,7 +554,7 @@ SELECT * FROM labour WHERE firstname = 'Alex' OR lastname = 'Arun' OR age = 18;
 | Arun      | Arun     | 18   | 3698521478 |
 +-----------+----------+------+------------+
 ```
-<br/><br/>
+<br/><hr/><br/>
 
 ### SQL NOT Operator
 The NOT operator is used in combination with other operators to give the opposite result, also called the negative result.<br/>
@@ -599,7 +599,7 @@ SELECT * FROM labour WHERE NOT firstname LIKE 'A%';
 | Margret   | Chau     | 22   | 564615352 |
 +-----------+----------+------+-----------+
 ```
-<br/><br/>
+<br/><hr/><br/>
 
 ### SQL Insert Statement
 The INSERT INTO statement is used to insert new records in a table.<br/>
@@ -671,7 +671,7 @@ SELECT * FROM labour;
 | HP        | Company  | 75   | 7854785   |
 +-----------+----------+------+----------+
 ```
-<br/><br/>
+<br/><hr/><br/>
 
 ### SQL Null Values
 A field with a NULL value is a field with no value. If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field.<br/>
@@ -721,7 +721,7 @@ SELECT * FROM labour WHERE firstname IS NOT NULL;
 | HP        | Company  | 75   | 7854785    |
 +-----------+----------+------+------------+
 ```
-<br/><br/>
+<br/><hr/><br/>
 
 
 ### SQL Update Statement
@@ -794,7 +794,7 @@ SELECT * FROM labour;
 +-----------+----------+------+------------+
 ```
 The record with "firstname" as 'HP' has been successfully updated to 'Sony.'
-<br/><br/>
+<br/><hr/><br/>
 
 ### SQL Delete Statement
 
