@@ -1462,12 +1462,102 @@ FROM employee
 INNER JOIN department ON employee.departmentid = department.departmentid;
 ```
 This query selects the first name and last name of employees along with their corresponding department IDs from the "Employee" and "Department" tables.
-<br/><br/>
+<br/><hr/><br/>
 
-2. MySQL OUTER JOIN Keyword:**
+2.** MySQL OUTER JOIN Keyword:**
 * Right outer join
 * Left outer join
-* full outer join
+  
+#### Left Outer Join:
+The LEFT JOIN keyword returns all records from the left table (table1), and the matching records (if any) from the right table (table2).<br/>
+To recreate the `employee` and `department` tables and perform a `LEFT JOIN`, follow these steps:<br/>
+Now you can perform the `LEFT JOIN` between the `Employee` and `Department` tables:<br/>
+
+```sql
+SELECT * FROM Employee
+LEFT JOIN Department ON Employee.DepartmentID = Department.DepartmentID;
+```
+
+Here's the result of the `LEFT JOIN` between the `Employee` and `Department` tables:
+
+```left join
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+| ID   | Firstname | Lastname | DateOfBirth | Gender | DepartmentID | DepartmentID | DepartmentName | ID   |
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+| 1001 | Aishwarya | Jayaram  | 2005-04-24  | F      |           11 |           11 | Engineering    | NULL |
+| 1002 | Anand     | Venkat   | 2005-05-22  | M      |           12 |           12 | Finance        | NULL |
+| 1003 | Bala      | Sundaram | 2004-11-02  | M      |           13 |           13 | Sales          | NULL |
+| 1004 | Deepa     | Mani     | 2004-12-09  | F      |           11 |           11 | Engineering    | NULL |
+| 1005 | Deepa     | Mahesh   | 2005-05-29  | F      |           14 |           14 | Marketing      | NULL |
+| 1006 | Gokul     | Ram      | 2004-11-27  | M      |           13 |           13 | Sales          | NULL |
+| 1007 | Shreya    | Gopi     | 2005-06-20  | F      |           17 |         NULL | NULL           | NULL |
+| 1008 | Abdul     | Rahman   | 2005-07-30  | M      |           18 |         NULL | NULL           | NULL |
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+```
+This shows the employees from the `Employee` table, and it includes the corresponding department information from the `Department` table when there's a match. If there's no matching department for an employee, the `DepartmentID` and `DepartmentName` columns from the `Department` table are shown as `NULL`.
+This will provide you with the joined result using a `LEFT JOIN` between the two tables.
+<br/><hr/><br/>
+
+#### Right Outer Join:
+The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records (if any) from the left table (table1).<br/>
+
+If you want to perform a `RIGHT JOIN` and see all the rows from the `Department` table, you need to switch the positions of the tables in the query. Here is a corrected version of your query with a `RIGHT JOIN`:<br/>
+
+```sql
+SELECT * FROM department
+RIGHT JOIN employee ON department.departmentID = employee.departmentID;
+```
+
+Here's the result of the `RIGHT JOIN` between the `Employee` and `Department` tables:
+
+```right join
++------+-----------+----------+-------------+--------+--------------+--------------+-----------------+------+
+| ID   | Firstname | Lastname | DateOfBirth | Gender | DepartmentID | DepartmentID | DepartmentName  | ID   |
++------+-----------+----------+-------------+--------+--------------+--------------+-----------------+------+
+| 1004 | Deepa     | Mani     | 2004-12-09  | F      |           11 |           11 | Engineering     | NULL |
+| 1001 | Aishwarya | Jayaram  | 2005-04-24  | F      |           11 |           11 | Engineering     | NULL |
+| 1002 | Anand     | Venkat   | 2005-05-22  | M      |           12 |           12 | Finance         | NULL |
+| 1006 | Gokul     | Ram      | 2004-11-27  | M      |           13 |           13 | Sales           | NULL |
+| 1003 | Bala      | Sundaram | 2004-11-02  | M      |           13 |           13 | Sales           | NULL |
+| 1005 | Deepa     | Mahesh   | 2005-05-29  | F      |           14 |           14 | Marketing       | NULL |
+| NULL | NULL      | NULL     | NULL        | NULL   |         NULL |           15 | Human Resources | NULL |
+| NULL | NULL      | NULL     | NULL        | NULL   |         NULL |           16 | IT              | NULL |
++------+-----------+----------+-------------+--------+--------------+--------------+-----------------+------+
+```
+
+This result shows all the departments from the `Department` table, and it includes the employees' information from the `Employee` table when there's a match. If there's no matching employee for a department, the employee-related columns (e.g., `ID`, `Firstname`, `Lastname`, etc.) are shown as `NULL`.
+<br/><hr/><br/>
+
+### Cross Outer Join:
+The CROSS JOIN keyword returns all records from both tables (table1 and table2).
+
+ ```sql
+SELECT * FROM department
+CROSS JOIN employee ON department.departmentID = employee.departmentID;
+```
+Here is the recreated result of the `CROSS JOIN` operation between the `Employee` and `Department` tables:
+
+```cross join
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+| ID   | Firstname | Lastname | DateOfBirth | Gender | DepartmentID | DepartmentID | DepartmentName | ID   |
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+| 1001 | Aishwarya | Jayaram  | 2005-04-24  | F      |           11 |           11 | Engineering    | NULL |
+| 1002 | Anand     | Venkat   | 2005-05-22  | M      |           12 |           12 | Finance        | NULL |
+| 1003 | Bala      | Sundaram | 2004-11-02  | M      |           13 |           13 | Sales          | NULL |
+| 1004 | Deepa     | Mani     | 2004-12-09  | F      |           11 |           11 | Engineering    | NULL |
+| 1005 | Deepa     | Mahesh   | 2005-05-29  | F      |           14 |           14 | Marketing      | NULL |
+| 1006 | Gokul     | Ram      | 2004-11-27  | M      |           13 |           13 | Sales          | NULL |
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+```
+This result shows a `CROSS JOIN` between the `Employee` and `Department` tables, combining every row from the `Employee` table with every row from the `Department` table, with some matching department information.
+<br/><hr/><br/>
+
+
+
+
+
+
+  
 
 
 
