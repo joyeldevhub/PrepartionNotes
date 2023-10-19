@@ -797,6 +797,49 @@ The record with "firstname" as 'HP' has been successfully updated to 'Sony.'
 <br/><hr/><br/>
 
 ### SQL Delete Statement
+1. The DELETE statement is used to delete existing records in a table.<br/>
+Note: Be careful when deleting records in a table! Notice the WHERE clause in the DELETE statement. The WHERE clause specifies which record(s) should be deleted. If you omit the WHERE clause, all records in the table will be deleted!<br/>
+
+```sql
+-- **Deleting records where "lastname" is 'kirk'
+DELETE FROM labour**
+WHERE lastname = 'kirk';
+
+-- **Viewing the updated "labour" table**
+SELECT * FROM labour;
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    | 22   | 6383470145 |
+| Arun      | Britto   | 18   | 6383470154 |
+| Alex      | Raj      | 25   | 56456856   |
+| Maria     | Anders   | 27   | 147        |
+| Ana       | Trujillo | 26   | 258        |
+| Antonio   | Moreno   | 28   | 369        |
+| Thomas    | Hardy    | 29   | 1047       |
+| Joyel     | Raj      | 20   | 1258       |
+| Arun      | Arun     | 18   | 3698521478 |
+| Karthi    | kaki     | 15   | 258963369  |
+| Margret   | Chau     | 22   | 564615352  |
+| NULL      | Doni     | 22   | NULL       |
+| Dell      | Company  | 65   | 563256     |
+| Sony      | Company  | 75   | 7854785    |
++-----------+----------+------+------------+
+```
+The record with "lastname" as 'kirk' has been successfully deleted from the table.<be/>
+
+2. Delete All records in a table.<br/>
+
+```sql
+-- **Delete all records from the "labour" table**
+DELETE FROM labour;
+
+The "labour" table has been deleted.<br/>
+<hr/><br/>
 
 
 
