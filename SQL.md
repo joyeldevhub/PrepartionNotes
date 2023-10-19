@@ -1462,6 +1462,22 @@ FROM employee
 INNER JOIN department ON employee.departmentid = department.departmentid;
 ```
 This query selects the first name and last name of employees along with their corresponding department IDs from the "Employee" and "Department" tables.
+
+Here is the result of the `INNER JOIN` operation between the `Employee` and `Department` tables:
+
+```inner join
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+| ID   | Firstname | Lastname | DateOfBirth | Gender | DepartmentID | DepartmentID | DepartmentName | ID   |
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+| 1001 | Aishwarya | Jayaram  | 2005-04-24  | F      | 11           | 11           | Engineering    | NULL |
+| 1002 | Anand     | Venkat   | 2005-05-22  | M      | 12           | 12           | Finance        | NULL |
+| 1003 | Bala      | Sundaram | 2004-11-02  | M      | 13           | 13           | Sales          | NULL |
+| 1004 | Deepa     | Mani     | 2004-12-09  | F      | 11           | 11           | Engineering    | NULL |
+| 1005 | Deepa     | Mahesh   | 2005-05-29  | F      | 14           | 14           | Marketing      | NULL |
+| 1006 | Gokul     | Ram      | 2004-11-27  | M      | 13           | 13           | Sales          | NULL |
++------+-----------+----------+-------------+--------+--------------+--------------+----------------+------+
+```
+This result shows an `INNER JOIN` between the `Employee` and `Department` tables, combining rows where the `DepartmentID` matches between the two tables.
 <br/><hr/><br/>
 
 2.** MySQL OUTER JOIN Keyword:**
