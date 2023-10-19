@@ -1089,7 +1089,14 @@ SELECT * FROM labour WHERE lastname LIKE 'Bri__o';
 <br/><hr/><br/>
 
 ### SQL Wildcards
+A wildcard character is used to substitute one or more characters in a string. Wildcard characters are used with the LIKE operator. The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.< br/>
 
+**%**	- Represents zero or more characters.<br/>
+**_**	- Represents a single character.<br/>
+**[]**	- Represents any single character within the brackets.<br/>
+**^**	- Represents any character not in the brackets.<br/>
+**-**	- Represents any single character within the specified range.<br/>
+**{}**	- Represents any escaped character.<br/>
 
 
 
