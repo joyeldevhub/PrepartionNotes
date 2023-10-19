@@ -840,3 +840,266 @@ The "labour" table has been deleted.
 <br/><hr/><br/>
 
 ### SQL MIN() and MAX() Functions
+1. The MIN() function returns the smallest value of the selected column.<br/>
+
+**To get the minimum age:**
+```sql
+SELECT MIN(age) FROM labour;
+```
+
+**Result:**
+```
++----------+
+| min(age) |
++----------+
+|       15 |
++----------+
+```
+<br/>
+2. The MAX() function returns the largest value of the selected column.<br/>
+
+**To get the maximum age:**
+
+```sql
+SELECT MAX(age) FROM labour;
+```
+
+**Result:**
+```
++----------+
+| max(age) |
++----------+
+|       75 |
++----------+
+```
+You've found the minimum age to be 15 and the maximum age to be 75 in the "labour" table.
+<br/><hr/><br/>
+
+### The SQL COUNT() Function
+The COUNT() function returns the number of rows that match a specified criterion.<br/>
+
+1. Count of all records in the "labour" table:
+```sql
+SELECT COUNT(*) FROM labour;
+```
+**Result:**
+```
++----------+
+| count(*) |
++----------+
+|       14 |
++----------+
+```
+< br/>
+
+2. Count of records with an age greater than 22 in the "labour" table:
+```sql
+SELECT COUNT(age) FROM labour WHERE age > 22;
+```
+**Result:**
+```
++------------+
+| count(age) |
++------------+
+|          7 |
++------------+
+```
+< br/>
+
+3. Count of records with a non-null "firstname" in the "labour" table: Null values can't count.
+```sql
+SELECT COUNT(firstname) FROM labour;
+```
+**Result:**
+```
++------------------+
+| count(firstname) |
++------------------+
+|               13 |
++------------------+
+```
+<br/><hr/><br/>
+
+### SQL SUM() Function
+The SUM() function returns the total sum of a numeric column.< br/>
+
+1. Sum of all ages in the "labour" table:
+```sql
+SELECT SUM(age) FROM labour;
+```
+
+**Result:**
+```
++----------+
+| sum(age) |
++----------+
+|      412 |
++----------+
+```
+< br/>
+
+2. Sum of ages for records where age is less than 20 in the "labour" table:
+```sql
+SELECT SUM(age) FROM labour WHERE age < 20;
+```
+
+**Result:**
+```
++----------+
+| sum(age) |
++----------+
+|       51 |
++----------+
+```
+< br/><hr/><br/>
+
+### SQL AVG() Function
+The AVG() function returns the average value of a numeric column. Note: null values are ignored.< br/>
+
+1. Average age of all records in the "labour" table:
+```sql
+SELECT AVG(age) FROM labour;
+```
+
+**Result:**
+```
++----------+
+| avg(age) |
++----------+
+|  29.4286 |
++----------+
+```
+< br/>
+
+2. Average age of records where age is greater than 25 in the "labour" table:
+```sql
+SELECT AVG(age) FROM labour WHERE age > 25;
+```
+
+**Result:**
+```
++----------+
+| avg(age) |
++----------+
+|  41.6667 |
++----------+
+```
+< br/><hr/><br/>
+
+### SQL LIKE Operator
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.<br/>
+
+There are two wildcards often used in conjunction with the LIKE operator:<br/>
+* The percent sign % represents zero, one, or multiple characters<br/>
+* The underscore sign _ represents one, single character<br/>
+
+1. Select records where the "firstname" starts with 'A':
+```sql
+SELECT * FROM labour WHERE firstname LIKE 'a%';
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    |   22 | 6383470145 |
+| Arun      | Britto   |   18 | 6383470154 |
+| Alex      | Raj      |   25 | 56456856   |
+| Ana       | Trujillo |   26 | 258        |
+| Antonio   | Moreno   |   28 | 369        |
+| Arun      | Arun     |   18 | 3698521478 |
++-----------+----------+------+------------+
+```
+<br/>
+
+2. Select records where the "firstname" ends with 'a':
+```sql
+SELECT * FROM labour WHERE firstname LIKE '%a';
+```
+
+**Result:**
+```
++-----------+----------+------+-------+
+| firstname | lastname | age  | phone |
++-----------+----------+------+-------+
+| Maria     | Anders   |   27 | 147   |
+| Ana       | Trujillo |   26 | 258   |
++-----------+----------+------+-------+
+```
+<br/>
+
+3. Select records where the "age" starts with '2':
+```sql
+SELECT * FROM labour WHERE age LIKE '2%';
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    |   22 | 6383470145 |
+| Alex      | Raj      |   25 | 56456856   |
+| Maria     | Anders   |   27 | 147        |
+| Ana       | Trujillo |   26 | 258        |
+| Antonio   | Moreno   |   28 | 369        |
+| Thomas    | Hardy    |   29 | 1047       |
+| Joyel     | Raj      |   20 | 1258       |
+| Margret   | Chau     |   22 | 564615352  |
+| NULL      | Doni     |   22 | NULL       |
++-----------+----------+------+------------+
+```
+<br/>
+
+4. Select records where the "firstname" starts with 'A' or the "age" starts with '1':
+```sql
+SELECT * FROM labour WHERE firstname LIKE 'A%' OR age LIKE '1%';
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Alex      | Joyel    |   22 | 6383470145 |
+| Arun      | Britto   |   18 | 6383470154 |
+| Alex      | Raj      |   25 | 56456856   |
+| Ana       | Trujillo |   26 | 258        |
+| Antonio   | Moreno   |   28 | 369        |
+| Arun      | Arun     |   18 | 3698521478 |
+| Karthi    | kaki     |   15 | 258963369  |
++-----------+----------+------+------------+
+```
+<br/>
+You've used the `LIKE` operator with a pattern to retrieve records where the "lastname" matches the pattern 'Bri__o' (where '_' represents any single character).<br/>
+
+```sql
+SELECT * FROM labour WHERE lastname LIKE 'Bri__o';
+```
+
+**Result:**
+```
++-----------+----------+------+------------+
+| firstname | lastname | age  | phone      |
++-----------+----------+------+------------+
+| Arun      | Britto   |   18 | 6383470154 |
++-----------+----------+------+------------+
+```
+<br/><hr/><br/>
+
+### SQL Wildcards
+
+
+
+
+
+
+
+
+
+
+
+
+
+
